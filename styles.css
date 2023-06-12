@@ -25,10 +25,11 @@ body {
   height: 50px;
   border:none;
   padding: 10px 20px;
-  border-radius:10px;
+  border-radius:30px;
+  border: #c0c0c0 1px solid;
   color: #ffffff;
-  background-color: #868484;
-
+  background-color: #727171;
+  box-shadow: 4px 4px 25px -6px rgba(0,0,0,0.75);
 }
 
 .message-container{
@@ -39,21 +40,31 @@ body {
 .chat-messages {
   padding: 20px;
   overflow-y: scroll;
-
+  max-height: 60vh;
   min-height: 60vh;
   width: 800px;
 }
 .message{
   font-size: larger;
-  color: #ffffff;
-  padding: 5px;
+  color: #e4e4e4;
+  padding: 10px 20px;
+  margin: 5px 0;
+  border-radius: 20px;
+  border: #c0c0c0 1px solid;
+  box-shadow: 4px 4px 25px -6px rgba(0,0,0,0.75);
 }
+.user{
+  margin-left: auto;
+  background-color: #65a3b3;
+}
+.chatbot{
+  margin-right: auto;
+  background-color: #888;
+}
+
 .input-container{
-  /* position: fixed;
-  bottom: 0;
-  left: 0; */
   width: 100%;
-  height: 20vh;
+  height: 10vh;
   display: flex;
   justify-content: center;
 
@@ -61,34 +72,40 @@ body {
 .chat-input {
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 30px 10px 0 10px;
   background-color: #727171;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: min-content;
-  border-radius: 10px;
+  border-radius: 40px;
+  border: #c0c0c0 1px solid;
+  box-shadow: 8px 8px 20px -1px rgba(0,0,0,0.75);
 }
 
-.chat-input input {
+ .chat-input input {
   flex-grow: 1;
   padding: 10px;
   border: none;
   border-radius: 4px;
   background-color: #727171;
+  color: #f2f2f2;
+  font-size: larger;
 }
-chat-input input:focus{
+.chat-input input:focus{
   outline: none;
 }
+
 .chat-input button {
   margin-left: 10px;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
-  background-color: #4CAF50;
+  border-radius: 20px;
+  background-color: #58949e;
   color: white;
   cursor: pointer;
+  border: #78aeb8 1px solid;
 }
 
 @media screen and (max-width: 800px) {
@@ -106,4 +123,37 @@ chat-input input:focus{
     width: 100%;
   }
 
+}
+
+
+::-webkit-scrollbar {
+  width: 10px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* color of the scrollbar thumb */
+  border-radius: 5px; /* roundness of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* color of the scrollbar thumb on hover */
+}
+
+/* Firefox */
+/* Please note that scrollbar customization in Firefox is currently limited */
+/* The following styles only change the scrollbar color */
+* {
+  scrollbar-color: #888 #f2f2f2; /* color of the scrollbar thumb and track */
+}
+
+*::-webkit-scrollbar {
+  width: 10px; /* width of the scrollbar */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* color of the scrollbar thumb */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* color of the scrollbar thumb on hover */
 }

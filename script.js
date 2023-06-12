@@ -18,15 +18,19 @@ document.addEventListener('DOMContentLoaded', function() {
       userInput.value = '';
     }
   }
-    function addMessage(sender, message) {
-      var messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-      messageElement.classList.add(sender);
-      messageElement.textContent = message;
+  function addMessage(sender, message) {
+    var messageContainer = document.createElement('div');
+    messageContainer.classList.add('message-container');
   
-      chatMessages.appendChild(messageElement);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
+    var messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.classList.add(sender);
+    messageElement.textContent = message;
+  
+    messageContainer.appendChild(messageElement);
+    chatMessages.appendChild(messageContainer);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
   
     function processUserMessage(recievedMessage) {
       // Process the user message and generate a response
