@@ -1,17 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var chatMessages = document.getElementById('chat-messages');
-    var userInput = document.getElementById('user-input');
-    var sendButton = document.getElementById('send-button');
-  
-    sendButton.addEventListener('click', function() {
-      var message = userInput.value;
-      if (message.trim() !== '') {
-        addMessage('user', message);
-        processUserMessage();
-        userInput.value = '';
-      }
-    });
-  
+  var chatMessages = document.getElementById('chat-messages');
+  var userInput = document.getElementById('user-input');
+  var sendButton = document.getElementById('send-button');
+
+  sendButton.addEventListener('click', sendMessage);
+  userInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  });
+
+  function sendMessage() {
+    var message = userInput.value;
+    if (message.trim() !== '') {
+      addMessage('user', message);
+      processUserMessage(message);
+      userInput.value = '';
+    }
+  }
     function addMessage(sender, message) {
       var messageElement = document.createElement('div');
       messageElement.classList.add('message');
