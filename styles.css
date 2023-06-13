@@ -1,7 +1,8 @@
 body {
   font-family: Arial, sans-serif;
-  background: rgb(19,68,68);
-  background: linear-gradient(0deg, rgba(19,68,68,1) 0%, rgba(0,54,62,1) 50%, rgba(32,32,32,1) 100%);   
+  background: rgb(51,100,71);
+  background: linear-gradient(0deg, rgba(51,100,71,1) 0%, rgba(47,90,69,1) 50%, rgba(25,48,36,1) 100%);
+  
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -21,15 +22,102 @@ body {
 }
 
 .dropdown {
+  position: relative;
+  display: inline-block;
+  height: min-content;
+}
+
+.dropdown-toggle {
+  transition: background-color 0.3s; 
+
+    width: 500px;
+    height: 50px;
+    border:none;
+    padding: 10px 20px;
+    border-radius:30px;
+    border: #777676 2px solid;
+    color: #ffffff;
+    background-color: #727171;
+    box-shadow: 4px 4px 25px -6px rgba(0,0,0,0.75);
+  font-size: large;
+}
+.dashed {
+  --b: 2px;  /* border thickness */
+  --s: 30px; /* size of the dashes */
+  --c1: #215A6D;
+  --c2: #92C7A3;
+  position: relative;
+}
+.dashed::before {
+  content:"";
+  position: absolute;
+  inset: 0;
+  padding: var(--b);
+  background: 
+    repeating-conic-gradient(var(--c1) 0 25%,var(--c2) 0 50%) 
+    0 0/var(--s) var(--s) round;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  border-radius: 30px;
+}
+
+
+.dropdown-menu {
   width: 500px;
-  height: 50px;
-  border:none;
-  padding: 10px 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   border-radius:30px;
-  border: #c0c0c0 1px solid;
-  color: #ffffff;
-  background-color: #727171;
-  box-shadow: 4px 4px 25px -6px rgba(0,0,0,0.75);
+    border: #777676 1px solid;
+    color: #ffffff;
+    background-color: #727171;
+    /* box-shadow: 4px 4px 25px -6px rgba(0,0,0,0.75); */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0s linear 0.3s;
+}
+
+.dropdown-menu li {
+  padding: 15px;
+  transition: background-color 0.3s;
+  text-align: center;
+  cursor: pointer;
+  border: #777676 1px solid;
+}
+.dropdown-menu li:first-child {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.dropdown-menu li:hover {
+  background-color: #555454;
+  box-shadow: 4px 4px 5px -6px rgba(0,0,0,0.75);
+}
+.dropdown-menu li:click {
+  background-color: #c9c2c2;
+  box-shadow: 4px 4px 5px -6px rgba(0,0,0,0.75);
+}
+
+.dropdown:hover .dropdown-toggle {
+  background-color: #555454;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .message-container{
@@ -50,12 +138,12 @@ body {
   padding: 10px 20px;
   margin: 5px 0;
   border-radius: 20px;
-  border: #c0c0c0 1px solid;
+  border: #777676 1px solid;
   box-shadow: 4px 4px 25px -6px rgba(0,0,0,0.75);
 }
 .user{
   margin-left: auto;
-  background-color: #65a3b3;
+  background-color: #7daa8b;
 }
 .chatbot{
   margin-right: auto;
@@ -80,7 +168,7 @@ body {
   justify-content: space-between;
   height: min-content;
   border-radius: 40px;
-  border: #c0c0c0 1px solid;
+  /* border: #c0c0c0 1px solid; */
   box-shadow: 8px 8px 20px -1px rgba(0,0,0,0.75);
 }
 
@@ -99,14 +187,15 @@ body {
 
 .chat-input button {
   margin-left: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background-color: #58949e;
+  /* padding: 10px 20px;
   color: white;
+  border: #78aeb8 1px solid; */
   cursor: pointer;
-  border: #78aeb8 1px solid;
+  background-color: #727171;
+  border: none;
+  border-radius: 30px;
 }
+
 
 @media screen and (max-width: 800px) {
   .chat-messages 
